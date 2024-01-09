@@ -24,5 +24,8 @@ class AuthSurvice extends ChangeNotifier {
     }
   }
 
-  //sith user out
+  //sign user out
+  Future<void> signOut() async {
+    return await FirebaseAuth.instance.signOut();
+  }
 }
