@@ -1,19 +1,42 @@
 import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/mytext_fild.dart';
+import 'package:chat_app/survices/auth/auth_survice.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class LoginPage extends StatefulWidget {
+  final void Function()? onTap;
+  const LoginPage({super.key, required this.onTap});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
   //text controller
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
-  final confirmpasscontroller = TextEditingController();
+
+  // sign in user
+  void signIn() async {
+    //get the auth servise
+    final authSurvice = Provider.of<AuthSurvice>(context, listen: false);
+
+    try {
+      await authSurvice.signInWithEmailandPassword(
+        emailcontroller.text,
+        passwordcontroller.text,
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.toString(),
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +62,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 50,
                 ),
 
-                //create account message
+                //walcome back
                 const Text(
-                  "Let's start exploring",
+                  "welcome back",
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -69,38 +92,30 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
 
                 const SizedBox(
-                  height: 10,
+                  height: 25,
                 ),
 
-                //confirm password textfild
-                MyTextField(
-                  controller: confirmpasscontroller,
-                  hintText: 'confirm password',
-                  obscureText: true,
-                ),
+                //signin button
+                MyButton(onTap: signIn, text: "sign in"),
 
                 const SizedBox(
                   height: 25,
                 ),
 
-                //sign up button
-                MyButton(onTap: () {}, text: "sign up"),
-
-                const SizedBox(
-                  height: 25,
-                ),
-
-                //signo in button
-                const Row(
+                //signoup button
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already a member?"),
-                    SizedBox(
+                    const Text("Not a member?"),
+                    const SizedBox(
                       width: 5,
                     ),
-                    Text(
-                      "Login now",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: widget.onTap,
+                      child: const Text(
+                        "Register now",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 )
