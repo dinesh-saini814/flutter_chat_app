@@ -86,7 +86,7 @@ class _ChatPageState extends State<ChatPage> {
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
     //align sender message in right and other user in left
-    var alignment = (data['sendedId'] == _firebaseAuth.currentUser!.uid)
+    var alignment = (data['senderId'] == _firebaseAuth.currentUser!.uid)
         ? Alignment.centerRight
         : Alignment.centerLeft;
 
@@ -96,13 +96,13 @@ class _ChatPageState extends State<ChatPage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment:
-              (data['sendedId'] == _firebaseAuth.currentUser!.uid)
+              (data['senderId'] == _firebaseAuth.currentUser!.uid)
                   ? CrossAxisAlignment.end
                   : CrossAxisAlignment.start,
           mainAxisAlignment:
-              (data['sendedId'] == _firebaseAuth.currentUser!.uid)
-                  ? MainAxisAlignment.end
-                  : MainAxisAlignment.start,
+              (data['senderId'] == _firebaseAuth.currentUser!.uid)
+                  ? MainAxisAlignment.start
+                  : MainAxisAlignment.end,
           children: [
             Text(data['senderEmail']),
             const SizedBox(

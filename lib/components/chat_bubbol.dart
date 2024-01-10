@@ -11,11 +11,12 @@ class ChatBubbol extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: const Color.fromARGB(255, 214, 214, 214),
+        color: Color.fromARGB(255, 255, 255, 255),
       ),
       child: Text(
         message,
-        style: const TextStyle(fontSize: 16, color: Colors.white),
+        style: const TextStyle(
+            fontSize: 16, color: Color.fromARGB(255, 32, 32, 32)),
       ),
     );
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/mytext_fild.dart';
 import 'package:chat_app/survices/auth/auth_survice.dart';
