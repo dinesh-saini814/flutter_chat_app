@@ -46,80 +46,83 @@ class _LoginPageState extends State<LoginPage> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 50,
-                ),
-                //logo
-                Icon(
-                  Icons.message_rounded,
-                  size: 100,
-                  color: Colors.grey[800],
-                ),
-
-                const SizedBox(
-                  height: 50,
-                ),
-
-                //walcome back
-                const Text(
-                  "welcome back",
-                  style: TextStyle(
-                    fontSize: 16,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 50,
                   ),
-                ),
+                  //logo
+                  Icon(
+                    Icons.message_rounded,
+                    size: 100,
+                    color: Colors.grey[800],
+                  ),
 
-                const SizedBox(
-                  height: 25,
-                ),
+                  const SizedBox(
+                    height: 50,
+                  ),
 
-                //email textfild
-                MyTextField(
-                    controller: emailcontroller,
-                    hintText: 'Email',
-                    obscureText: false),
-
-                const SizedBox(
-                  height: 10,
-                ),
-
-                //password textfild
-                MyTextField(
-                  controller: passwordcontroller,
-                  hintText: 'Password',
-                  obscureText: true,
-                ),
-
-                const SizedBox(
-                  height: 25,
-                ),
-
-                //signin button
-                MyButton(onTap: signIn, text: "sign in"),
-
-                const SizedBox(
-                  height: 25,
-                ),
-
-                //signoup button
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Not a member?"),
-                    const SizedBox(
-                      width: 5,
+                  //walcome back
+                  const Text(
+                    "welcome back",
+                    style: TextStyle(
+                      fontSize: 16,
                     ),
-                    GestureDetector(
-                      onTap: widget.onTap,
-                      child: const Text(
-                        "Register now",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+
+                  //email textfild
+                  MyTextField(
+                      controller: emailcontroller,
+                      hintText: 'Email',
+                      obscureText: false),
+
+                  const SizedBox(
+                    height: 10,
+                  ),
+
+                  //password textfild
+                  MyTextField(
+                    controller: passwordcontroller,
+                    hintText: 'Password',
+                    obscureText: true,
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+
+                  //signin button
+                  MyButton(onTap: signIn, text: "sign in"),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+
+                  //signoup button
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Not a member?"),
+                      const SizedBox(
+                        width: 5,
                       ),
-                    ),
-                  ],
-                )
-              ],
+                      GestureDetector(
+                        onTap: widget.onTap,
+                        child: const Text(
+                          "Register now",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
